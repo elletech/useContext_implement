@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
+import UnusingCountComponent from '../components/UnusingCountComponent';
+import UsingCountComponent from '../components/UsingCountComponent';
 import { CountContext } from '../contexts/counter';
 
 const Home: NextPage = () => {
@@ -13,9 +14,8 @@ const Home: NextPage = () => {
       <p>count:{ctx.count}</p>
       <button onClick={increment}>count increment</button>
       <button onClick={decrement}>count decrement</button>
-      <Link href="/profile">
-        <a>Profile</a>
-      </Link>
+      <UsingCountComponent />
+      <UnusingCountComponent />
     </>
   );
 };
