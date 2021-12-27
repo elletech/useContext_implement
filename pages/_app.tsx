@@ -1,13 +1,12 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { CountContext, useCount } from '../contexts/counter';
+import { ThemeProvider } from '../contexts/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const ctx = useCount();
   return (
-    <CountContext.Provider value={ctx}>
+    <ThemeProvider>
       <Component {...pageProps} />
-    </CountContext.Provider>
+    </ThemeProvider>
   );
 }
 

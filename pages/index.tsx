@@ -1,19 +1,18 @@
 import type { NextPage } from 'next';
-import { useContext } from 'react';
 import UnusingCountComponent from '../components/UnusingCountComponent';
 import UsingCountComponent from '../components/UsingCountComponent';
-import { CountContext } from '../contexts/counter';
+import { useThemeValue, useThemeSetValue } from '../contexts/theme';
 
 const Home: NextPage = () => {
   console.log('index.tsxがmountされました。');
-  const ctx = useContext(CountContext);
-  const increment = () => ctx.setCountNum(ctx.count + 1);
-  const decrement = () => ctx.setCountNum(ctx.count - 1);
+  const theme = useThemeValue();
+  const setTheme = useThemeSetValue();
+  const setNaturalTheme = () =>
+    setTheme({ foreground: 'black', background: 'white' });
   return (
     <>
-      <p>count:{ctx.count}</p>
-      <button onClick={increment}>count increment</button>
-      <button onClick={decrement}>count decrement</button>
+      <p>color: {theme.background}</p>
+      <button onClick={setNaturalTheme}>changeTheme</button>
       <UsingCountComponent />
       <UnusingCountComponent />
     </>
